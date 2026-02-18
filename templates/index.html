@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeFlow IDE | Professional Online Compiler</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body class="light-mode">
+    <div class="app-wrapper">
+        <nav class="sidebar">
+            <div class="sidebar-top">
+                <div class="logo-small">CF</div>
+                <div class="sidebar-icon active" title="Editor">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m18 16 4-4-4-4"></path>
+                        <path d="m6 8-4 4 4 4"></path>
+                        <path d="m14.5 4-5 16"></path>
+                    </svg>
+                </div>
+            </div>
+            <div class="sidebar-bottom">
+                <div class="theme-toggle-container">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <div class="slider round"></div>
+                    </label>
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content">
+            <header class="top-bar">
+                <div class="left-section">
+                    <div class="project-info">
+                        <span class="file-name">main.py</span>
+                        <span class="status-dot"></span>
+                    </div>
+                </div>
+                <div class="center-section">
+                    <div class="compiler-controls">
+                        <select id="language-select" class="custom-select">
+                            <option value="python">Python 3.10</option>
+                            <option value="java">Java 17 (OpenJDK)</option>
+                        </select>
+                        <button id="run-btn" class="btn btn-run">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="currentColor" stroke="none">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                            <span class="btn-text">Run</span>
+                            <span class="loader hidden"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="right-section">
+                </div>
+            </header>
+
+            <div class="ide-body">
+                <div class="editor-section">
+                    <div class="section-label">CODE EDITOR</div>
+                    <div class="editor-container">
+                        <div class="line-numbers" id="line-numbers"></div>
+                        <textarea id="code-editor" spellcheck="false" placeholder="Write your code here..."></textarea>
+                    </div>
+                </div>
+
+                <div class="resizer" id="resizer"></div>
+
+                <div class="terminal-section">
+                    <div class="terminal-header">
+                        <div class="section-label">TERMINAL</div>
+                        <button id="clear-btn" class="clear-btn">Clear</button>
+                    </div>
+                    <div class="terminal-body">
+                        <pre id="output-display" class="idle">Ready to execute...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

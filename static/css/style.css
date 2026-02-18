@@ -1,0 +1,332 @@
+:root {
+    /* Vibrant Palette - Inspired by Landing Page */
+    --accent: #6366f1;
+    --accent-glow: rgba(99, 102, 241, 0.25);
+    --bg-main: #f5f3ff;
+    --sidebar-bg: #1e1e2e;
+    --nav-bg: rgba(255, 255, 255, 0.85);
+    /* Translucent */
+    --card-bg: #ffffff;
+    --editor-bg: #ffffff;
+    --terminal-bg: #0f172a;
+    --border-color: rgba(99, 102, 241, 0.15);
+    --text-main: #1e1b4b;
+    --text-muted: #6366f1;
+    --run-green: #10b981;
+    --error-red: #ef4444;
+
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.dark-mode {
+    --bg-main: #0b0e14;
+    --sidebar-bg: #080a0f;
+    --topbar-bg: #11141d;
+    --card-bg: #11141d;
+    --editor-bg: #0d1117;
+    --terminal-bg: #080a0f;
+    --border-color: #21262d;
+    --text-main: #e6edf3;
+    --text-muted: #8b949e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body,
+html {
+    height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle at top right, var(--accent-glow), transparent),
+        radial-gradient(circle at bottom left, var(--accent-glow), transparent),
+        var(--bg-main);
+}
+
+.app-wrapper {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 64px;
+    background-color: var(--sidebar-bg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0;
+    z-index: 100;
+}
+
+.logo-small {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 14px;
+    margin-bottom: 2rem;
+}
+
+.sidebar-icon {
+    padding: 0.75rem;
+    color: #8b949e;
+    cursor: pointer;
+    transition: var(--transition);
+    border-radius: 8px;
+}
+
+.sidebar-icon:hover,
+.sidebar-icon.active {
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+/* Top Bar */
+.top-bar {
+    height: 64px;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 1.5rem;
+}
+
+.project-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.file-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--text-main);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--run-green);
+    border-radius: 50%;
+    box-shadow: 0 0 8px var(--run-green);
+}
+
+.compiler-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    background: var(--bg-main);
+    padding: 4px;
+    border-radius: 10px;
+}
+
+.custom-select {
+    background: transparent;
+    border: none;
+    color: var(--text-main);
+    font-weight: 500;
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+    outline: none;
+    cursor: pointer;
+}
+
+.btn-run {
+    background: linear-gradient(135deg, var(--accent), #818cf8);
+    color: white;
+    padding: 0.6rem 1.75rem;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 8px 20px var(--accent-glow);
+}
+
+.btn-run:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+/* IDE Body */
+.ide-body {
+    flex: 1;
+    display: flex;
+    min-height: 0;
+}
+
+.editor-section,
+.terminal-section {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.editor-section {
+    flex: 7;
+    background: var(--editor-bg);
+    margin: 1.5rem;
+    margin-right: 0.75rem;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.terminal-section {
+    flex: 3;
+    background: var(--terminal-bg);
+    margin: 1.5rem;
+    margin-left: 0.75rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.section-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    padding: 0.75rem 1.25rem;
+    text-transform: uppercase;
+}
+
+.editor-container {
+    flex: 1;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+}
+
+.line-numbers {
+    width: 48px;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.8rem;
+    text-align: right;
+    padding: 1rem 12px 1rem 0;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+}
+
+#code-editor {
+    flex: 1;
+    background: transparent;
+    border: none;
+    resize: none;
+    outline: none;
+    color: var(--text-main);
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    padding: 1rem;
+}
+
+/* Terminal */
+.terminal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.clear-btn {
+    background: transparent;
+    border: none;
+    color: #8b949e;
+    font-size: 0.75rem;
+    cursor: pointer;
+    padding: 0 1.25rem;
+}
+
+.terminal-body {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.9rem;
+}
+
+#output-display {
+    color: #e6edf3;
+    white-space: pre-wrap;
+    line-height: 1.5;
+}
+
+.idle {
+    opacity: 0.5;
+    font-style: italic;
+}
+
+.success {
+    color: var(--run-green) !important;
+}
+
+.error {
+    color: var(--error-red) !important;
+}
+
+/* Custom Theme Switch for Sidebar */
+.theme-switch {
+    width: 24px;
+    height: 24px;
+    position: relative;
+}
+
+.theme-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    width: 24px;
+    height: 24px;
+    background: #8b949e;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+input:checked+.slider {
+    background: var(--accent);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+/* Mobile Warning: Hide or Optimize */
+@media (max-width: 768px) {
+    .ide-body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 50px;
+    }
+}

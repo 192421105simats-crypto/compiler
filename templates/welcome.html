@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to CodeFlow | Cloud IDE</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background: radial-gradient(circle at top right, var(--accent-glow), transparent),
+                radial-gradient(circle at bottom left, var(--accent-glow), transparent),
+                var(--bg-main);
+            overflow: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeIn 1s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            line-height: 1.6;
+        }
+
+        .get-started-btn {
+            background: var(--accent);
+            color: white;
+            padding: 1.25rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border-radius: 16px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transition);
+            box-shadow: 0 10px 25px var(--accent-glow);
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 35px var(--accent-glow);
+            filter: brightness(1.1);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .feature-item {
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            transition: var(--transition);
+        }
+
+        .feature-item:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .feature-text {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--text-main);
+        }
+    </style>
+</head>
+
+<body class="light-mode">
+    <div class="hero-container">
+        <div class="hero-logo">🚀</div>
+        <h1 class="hero-title">Experience the future of coding.</h1>
+        <p class="hero-subtitle">CodeFlow is a lightning-fast, modern cloud IDE designed for speed and elegance. Compile
+            Python and Java instantly with our zero-config environment.</p>
+
+        <a href="/compiler" class="get-started-btn">
+            Get Started Free
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+        </a>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <span class="feature-text">Instant Compiling</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🌙</span>
+                <span class="feature-text">Native Dark Mode</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🌏</span>
+                <span class="feature-text">Full Library Ecosystem</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
